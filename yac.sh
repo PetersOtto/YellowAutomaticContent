@@ -1,14 +1,23 @@
 #!/bin/bash
 
 # **********************************
-# yac.sh v0.01
+# yac.sh v0.02
 # YellowAutomaticContent
-# Script from: 01.02.2024
+# Script from: 02.02.2024
 #
 # This script automatically creates content
 # for the Yellow CMS Blog. 
-# The images are downloaded from unsplash.
+# The images will be downloaded from unsplash.
 #
+# How to use.
+# All details you find below.
+# 1. copy the file »yac.sh« into your blog folder (content/2-blog).
+# 2. open the file »yac.sh« with a code editor.
+# 3. make your settings.
+# 4. start the file with bash yac.sh in a terminal.
+# have fun!
+#
+# https://github.com/PetersOtto/YellowAutomaticContent
 # https://github.com/datenstrom
 # https://unsplash.com
 # **********************************
@@ -49,9 +58,14 @@ tagThree="Tag tree"
 moreContent="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna pizza. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. [--more--]
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna pizza. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
 # ********************************
 # Enter parameters for the images *
 # ********************************
+
+# Choose the download folder
+#imageDownloadFolder="NO" # Same storage location as the posts.
+imageDownloadFolder="../../media/images/" # Default location for images. Script location is »content/your-blog-folder«
 
 # Choose picture theme
 theme='buildings'
@@ -70,9 +84,9 @@ minimumWidth=600 # px
 longSideFactor=16
 shortSideFactor=9
 
-# **************
-# Start script *
-# **************
+# ********************
+# Start part »Posts« *
+# ********************
 
 clear
 
@@ -147,9 +161,9 @@ echo ""
 sleep 1
 
 
-# **************
-# Start script *
-# **************
+# *********************
+# Start part »Images« *
+# *********************
 
 if [ "$downloadImages" == "YES" ]
 	then
@@ -161,7 +175,7 @@ if [ "$downloadImages" == "YES" ]
     echo ""
     sleep 2
 
-    # Berechnung der Auflösung
+    # Calculate resolution
     heightLandscapeFormat=$((($minimumWidth*$shortSideFactor)/($longSideFactor)))
     heightPortraitFormat=$((($minimumWidth*$longSideFactor)/($shortSideFactor)))
 
@@ -172,7 +186,10 @@ if [ "$downloadImages" == "YES" ]
             ni=$(printf "%03d" "$i")
             echo "Download image No. $ni - landscape with the resolution ${minimumWidth}px x ${heightLandscapeFormat}px ($longSideFactor zu $shortSideFactor) - theme: »$theme«" 
             wget -q -O $ni-unsplash.jpg https://source.unsplash.com/random/${minimumWidth}x${heightLandscapeFormat}/?$theme
-            mv $ni-unsplash.jpg ../../media/images/
+            if [ "$imageDownloadFolder" != "NO" ]
+            then
+                mv $ni-unsplash.jpg $imageDownloadFolder
+            fi
         fi
         
         if [ "$portraitFormat" == "YES" ] && [ "$landscapeFormat" == "YES" ]
@@ -185,7 +202,10 @@ if [ "$downloadImages" == "YES" ]
             ni=$(printf "%03d" "$i") 
             echo "Download image No. $ni - portrait with the resolution ${minimumWidth}px x ${heightPortraitFormat}px ($shortSideFactor zu $longSideFactor) - theme: »$theme«"
             wget -q -O $ni-unsplash.jpg https://source.unsplash.com/random/${minimumWidth}x${heightPortraitFormat}/?$theme
-            mv $ni-unsplash.jpg ../../media/images/
+            if [ "$imageDownloadFolder" != "NO" ]
+            then
+                mv $ni-unsplash.jpg $imageDownloadFolder
+            fi
         fi
             
         i=$[$i+1]; 
@@ -198,6 +218,5 @@ if [ "$downloadImages" == "YES" ]
     echo ""
     sleep 2
 fi
-
 
 exit 0
