@@ -65,7 +65,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 # Choose the download folder
 #imageDownloadFolder="NO" # Same storage location as the posts.
-imageDownloadFolder="../../media/images/" # Default location for images. Script location is »content/your-blog-folder«
+imageDownloadFolder="../../media/images/" # Default location for images. Script location is »content/your-blog« folder.
 
 # Choose picture theme
 theme='buildings'
