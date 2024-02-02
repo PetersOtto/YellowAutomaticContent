@@ -14,7 +14,7 @@
 # 1. copy the file »yac.sh« into your blog folder (content/2-blog).
 # 2. open the file »yac.sh« with a code editor.
 # 3. make your settings.
-# 4. start the file with bash yac.sh in a terminal.
+# 4. start the file with »bash yac.sh« in a terminal.
 # have fun!
 #
 # https://github.com/PetersOtto/YellowAutomaticContent
