@@ -142,7 +142,7 @@ Tag: $tag
 
 $moreContent"
 
-	filename="$newDateFile-$blogNameLow-$ni"
+	filename="$newDateFile-$blogNameLow-no-$ni"
 	
 	cat <<-EoF > $filename.md
 	$header
