@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # **********************************
-# yac.sh v0.02
+# yac.sh v0.03
 # YellowAutomaticContent
-# Script from: 02.02.2024
+# Script from: 06.02.2024
 #
 # This script automatically creates content
 # for the Yellow CMS Blog. 
