@@ -119,7 +119,7 @@ while [ $i -lt $numberPost ]; do
 
     if [ $randomTagNo == 3 ]
     then
-        tag=$tagTwo
+        tag=$tagThree
     fi
 
 	ni=$(printf "%03d" "$i")
