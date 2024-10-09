@@ -3,6 +3,9 @@ This script can be use to create posts for the Yellow CMS blog. The images will 
 I use this script, when I create themes for the Yellow CMS locally on my computer.
 I am currently working with Ubuntu 20.04. I don't know, if the script will work on other operating systems.
 
+UPDATE 09.10.24
+source.unsplash.com is down and no longer works. I have switched to https://picsum.photos/. If anyone has a better idea, please let me know.  
+
 ## How to use.
 All details you will find in the script file `yac.sh`.
 
