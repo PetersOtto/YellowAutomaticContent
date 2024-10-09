@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # **********************************
-# yac.sh v0.03
+# yac.sh v0.04
 # YellowAutomaticContent
-# Script from: 06.02.2024
+# Script from: 09.10.2024
 #
 # This script automatically creates content
 # for the Yellow CMS Blog. 
@@ -19,7 +19,8 @@
 #
 # https://github.com/PetersOtto/YellowAutomaticContent
 # https://github.com/datenstrom
-# https://unsplash.com
+# https://unsplash.com (Is not working anymore)
+# https://picsum.photos/ 
 # **********************************
 
 # ******************
@@ -68,6 +69,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 imageDownloadFolder="../../media/images/" # Default location for images. Script location is »content/your-blog« folder.
 
 # Choose picture theme
+# Does not currently work with https://picsum.photos/
 theme='buildings'
 
 # Number of images to be downloaded from Unsplash.
@@ -119,7 +121,7 @@ while [ $i -lt $numberPost ]; do
 
     if [ $randomTagNo == 3 ]
     then
-        tag=$tagThree
+        tag=$tagTwo
     fi
 
 	ni=$(printf "%03d" "$i")
@@ -185,7 +187,8 @@ if [ "$downloadImages" == "YES" ]
         then
             ni=$(printf "%03d" "$i")
             echo "Download image No. $ni - landscape with the resolution ${minimumWidth}px x ${heightLandscapeFormat}px ($longSideFactor zu $shortSideFactor) - theme: »$theme«" 
-            wget -q -O $ni-unsplash.jpg https://source.unsplash.com/random/${minimumWidth}x${heightLandscapeFormat}/?$theme
+            # wget -q -O $ni-unsplash.jpg https://source.unsplash.com/random/${minimumWidth}x${heightLandscapeFormat}/?$theme
+            wget -q -O $ni-picsum.jpg https://picsum.photos/${minimumWidth}/${heightLandscapeFormat}
             if [ "$imageDownloadFolder" != "NO" ]
             then
                 mv $ni-unsplash.jpg $imageDownloadFolder
@@ -201,7 +204,8 @@ if [ "$downloadImages" == "YES" ]
         then	
             ni=$(printf "%03d" "$i") 
             echo "Download image No. $ni - portrait with the resolution ${minimumWidth}px x ${heightPortraitFormat}px ($shortSideFactor zu $longSideFactor) - theme: »$theme«"
-            wget -q -O $ni-unsplash.jpg https://source.unsplash.com/random/${minimumWidth}x${heightPortraitFormat}/?$theme
+            # wget -q -O $ni-unsplash.jpg https://source.unsplash.com/random/${minimumWidth}x${heightPortraitFormat}/?$theme
+            wget -q -O $ni-picsum.jpg https://picsum.photos/${minimumWidth}/${heightPortraitFormat}
             if [ "$imageDownloadFolder" != "NO" ]
             then
                 mv $ni-unsplash.jpg $imageDownloadFolder
